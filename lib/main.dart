@@ -13,15 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100.0),
-          child: AppBar(
-            backgroundColor: Colors.blue,
-            elevation: 70.0,
-            title: Center(
-              child: Text('Profile'), // Center the title
-            ),
-          ),
+        appBar: AppBar(
+          title: Text("Profile"),
+          centerTitle: true,
         ),
         body: Center(
           child: Column(
@@ -29,7 +23,8 @@ class MyApp extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 20, // Adjust the size as needed
-                backgroundColor: Colors.green, // Green color for the circle background
+                backgroundColor:
+                    Colors.green, // Green color for the circle background
                 child: Icon(
                   Icons.person, // User icon
                   size: 40, // Adjust the size as needed
@@ -39,12 +34,16 @@ class MyApp extends StatelessWidget {
               SizedBox(height: 10), // Add spacing between the icon and text
               Text(
                 'John Doe',
-                style: TextStyle(fontSize: 24, color: Colors.green), // Green color for the text
+                style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.green), // Green color for the text
               ),
               SizedBox(height: 5), // Add spacing between the two sentences
               Text(
                 'Flutter Batch 4',
-                style: TextStyle(fontSize: 18, color: Colors.blue), // Blue color for the text
+                style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.blue), // Blue color for the text
               ),
             ],
           ),
