@@ -1,54 +1,65 @@
-/*
-Kazi Shahed Ahmed
-Module 5 - Live Test
-*/
+/*KAZI SHAHED AHMED
+* MODULE-6: LIVE TEST
+* */
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MyShoppingListApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyShoppingListApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Profile"),
+          title: Text("My Shopping List"),
           centerTitle: true,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {
+                // Add cart functionality here
+              },
+            ),
+          ],
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 20, // Adjust the size as needed
-                backgroundColor:
-                    Colors.green, // Green color for the circle background
-                child: Icon(
-                  Icons.person, // User icon
-                  size: 40, // Adjust the size as needed
-                  color: Colors.white, // White color for the icon
-                ),
-              ),
-              SizedBox(height: 10), // Add spacing between the icon and text
-              Text(
-                'John Doe',
-                style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.green), // Green color for the text
-              ),
-              SizedBox(height: 5), // Add spacing between the two sentences
-              Text(
-                'Flutter Batch 4',
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.blue), // Blue color for the text
-              ),
-            ],
-          ),
-        ),
+        body: ShoppingList(),
       ),
     );
   }
+}
+
+class ShoppingList extends StatelessWidget {
+  final List<ShoppingItem> shoppingItems = [
+    ShoppingItem("Watch", Icons.watch),
+    ShoppingItem("Sunglasses", Icons.accessibility),
+    ShoppingItem("Laptop", Icons.laptop),
+    ShoppingItem("Headphones", Icons.headset),
+    ShoppingItem("Mobile", Icons.mobile_screen_share),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: shoppingItems.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          leading: Icon(shoppingItems[index].icon),
+          title: Text(shoppingItems[index].name),
+          onTap: () {
+            // Add item click functionality here
+          },
+        );
+      },
+    );
+  }
+}
+
+class ShoppingItem {
+  final String name;
+  final IconData icon;
+
+  ShoppingItem(this.name, this.icon);
 }
